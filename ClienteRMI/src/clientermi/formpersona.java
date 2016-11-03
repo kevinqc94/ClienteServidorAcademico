@@ -204,7 +204,8 @@ public class formpersona extends javax.swing.JFrame {
         try{
             Registry registro = LocateRegistry.getRegistry("127.0.0.1", 4567);
             RMIBD interfaz = (RMIBD) registro.lookup("rmi://localhost:4567/RMIBD");
-            interfaz.Ingresar(cod,nom,apll,dir);
+//            interfaz.Ingresar(cod,nom,apll,dir);
+interfaz.Ingresar(cod,nom,apll,dir);
             JOptionPane.showMessageDialog(null,"Registro Con Exito");
             while (modelo.getRowCount()>0)modelo.removeRow(0);
             jTextField1.setText("");

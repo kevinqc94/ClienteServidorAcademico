@@ -27,77 +27,89 @@ public class FormPanelControl extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenuItem18 = new javax.swing.JMenuItem();
+        jMenuBar2 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenu6 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem9 = new javax.swing.JMenuItem();
+        jMenu7 = new javax.swing.JMenu();
         jMenuItem10 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem11 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem12 = new javax.swing.JMenuItem();
-        jMenu4 = new javax.swing.JMenu();
-        jMenuItem8 = new javax.swing.JMenuItem();
+        jMenuItem13 = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
+        jMenuItem14 = new javax.swing.JMenuItem();
+        jMenuItem15 = new javax.swing.JMenuItem();
+        jMenu9 = new javax.swing.JMenu();
+        jMenuItem16 = new javax.swing.JMenuItem();
+        jMenuItem17 = new javax.swing.JMenuItem();
+        jMenuItem19 = new javax.swing.JMenuItem();
+
+        jMenuItem18.setText("jMenuItem18");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jMenu1.setText("Archivo");
+        jMenuBar2.add(jMenu1);
 
-        jMenuItem1.setText("Cerrar Sesion");
-        jMenu1.add(jMenuItem1);
+        jMenu6.setText("Administrar Alumnos");
 
-        jMenuItem10.setText("Cerrar Sistema");
-        jMenuItem10.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem1.setText("Registrar Alumno");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem10ActionPerformed(evt);
+                jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem10);
+        jMenu6.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu1);
-
-        jMenu2.setText("Registros");
-
-        jMenuItem2.setText("Registrar Docentes");
-        jMenu2.add(jMenuItem2);
-
-        jMenuItem3.setText("Registrar Alumnos");
-        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItem9.setText("Modificar Alumno");
+        jMenuItem9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem3ActionPerformed(evt);
+                jMenuItem9ActionPerformed(evt);
             }
         });
-        jMenu2.add(jMenuItem3);
+        jMenu6.add(jMenuItem9);
 
-        jMenuItem11.setText("Registrar Notas");
-        jMenu2.add(jMenuItem11);
+        jMenuBar2.add(jMenu6);
 
-        jMenuBar1.add(jMenu2);
+        jMenu7.setText("Administrar Docentes");
 
-        jMenu3.setText("Consultas");
+        jMenuItem10.setText("Registrar Docentes");
+        jMenu7.add(jMenuItem10);
 
-        jMenuItem5.setText("Consultar Docentes");
-        jMenu3.add(jMenuItem5);
+        jMenuItem13.setText("Modificar Docentes");
+        jMenu7.add(jMenuItem13);
 
-        jMenuItem7.setText("Consultar Alumnos");
-        jMenu3.add(jMenuItem7);
+        jMenuBar2.add(jMenu7);
 
-        jMenuItem12.setText("Consultar Notas");
-        jMenu3.add(jMenuItem12);
+        jMenu8.setText("Administrar Notas");
 
-        jMenuBar1.add(jMenu3);
+        jMenuItem14.setText("Registrar Notas");
+        jMenu8.add(jMenuItem14);
 
-        jMenu4.setText("Acerca de");
+        jMenuItem15.setText("Modificar Notas");
+        jMenu8.add(jMenuItem15);
 
-        jMenuItem8.setText("Version");
-        jMenu4.add(jMenuItem8);
+        jMenuBar2.add(jMenu8);
 
-        jMenuBar1.add(jMenu4);
+        jMenu9.setText("Consultar Datos");
 
-        setJMenuBar(jMenuBar1);
+        jMenuItem16.setText("Listar Alumnos");
+        jMenu9.add(jMenuItem16);
+
+        jMenuItem17.setText("Listar Docentes");
+        jMenuItem17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem17ActionPerformed(evt);
+            }
+        });
+        jMenu9.add(jMenuItem17);
+
+        jMenuItem19.setText("Listar Notas");
+        jMenu9.add(jMenuItem19);
+
+        jMenuBar2.add(jMenu9);
+
+        setJMenuBar(jMenuBar2);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -113,17 +125,17 @@ public class FormPanelControl extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        
-        FormRegAlumnos AbrirFormRegistro=new FormRegAlumnos(); 
-         AbrirFormRegistro.setVisible(true);
-         
-    }//GEN-LAST:event_jMenuItem3ActionPerformed
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem10ActionPerformed
+    private void jMenuItem9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem9ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem10ActionPerformed
+    }//GEN-LAST:event_jMenuItem9ActionPerformed
+
+    private void jMenuItem17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem17ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem17ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,18 +174,20 @@ public class FormPanelControl extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
-    private javax.swing.JMenu jMenu4;
-    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenu6;
+    private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
+    private javax.swing.JMenu jMenu9;
+    private javax.swing.JMenuBar jMenuBar2;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
-    private javax.swing.JMenuItem jMenuItem11;
-    private javax.swing.JMenuItem jMenuItem12;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
+    private javax.swing.JMenuItem jMenuItem13;
+    private javax.swing.JMenuItem jMenuItem14;
+    private javax.swing.JMenuItem jMenuItem15;
+    private javax.swing.JMenuItem jMenuItem16;
+    private javax.swing.JMenuItem jMenuItem17;
+    private javax.swing.JMenuItem jMenuItem18;
+    private javax.swing.JMenuItem jMenuItem19;
+    private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
 }
