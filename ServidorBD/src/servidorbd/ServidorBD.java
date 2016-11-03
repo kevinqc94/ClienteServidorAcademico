@@ -36,64 +36,6 @@ public static void main (String [] args){
     }
 
 
-/*@Override
-public ArrayList<persona>mostrar() throws RemoteException{
-    int cod;
-    String nom,apll,dir;
-    ArrayList<persona> lispersona=new ArrayList<>();
-    try{
-        Class.forName("com.mysql.jdbc.Driver");
-        Connection cn= DriverManager.getConnection("jdbc:mysql://localhost:3306/ejemplo10", "root", "");
-        String sentencia= "select * from persona";
-        Statement stn=(Statement) cn.createStatement();
-        ResultSet rs = stn.executeQuery(sentencia);
-        while (rs.next()){
-            cod=rs.getInt(1);
-            nom=rs.getString(2);
-            apll=rs.getString(3);
-            dir=rs.getString(4);
-            persona persona = new persona (cod, nom, apll, dir);
-            lispersona.add(persona);
-        }
-        cn.close();
-    }catch (Exception e) {
-            System.out.println(e);
-        }
-    return lispersona;
-}
-
-@Override
-public boolean Ingresar (int codigo, String nombre, String apellido, String direccion) throws RemoteException{
-    boolean exito;
-    exito=false;
-    try{
-        Class.forName("com.mysql.jdbc.Driver"); //carga el driver
-        Connection cn= DriverManager.getConnection("jdbc:mysql://localhost:3306/ejemplo10", "root", "");
-        String sentencia = "insert into persona(codigo,nombre,apellido,direccion) values (?,?,?,?)";
-        PreparedStatement ps = cn.prepareStatement(sentencia);
-        ps.setInt(1, codigo);
-        ps.setString(2, nombre);
-        ps.setString(3, apellido);
-        ps.setString(4, direccion);
-        ps.executeUpdate();
-        exito=true;
-        cn.close();
-    }catch (Exception e){
-        System.out.println(e);
-    }
-    return exito;
-}
-
-
-
-
-
-   public boolean agregar(int codigo, String nombre, String apellido, String direccion) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
-    */
-
     @Override
     public ArrayList<persona> buscar_persona(int codigo) throws RemoteException {
 

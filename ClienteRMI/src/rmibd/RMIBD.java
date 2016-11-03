@@ -11,6 +11,8 @@ public interface RMIBD  extends Remote{
   public boolean eliminar (int codigo) throws RemoteException;
  public boolean modificar (int codigo, String nombre, String apellido, String direccion) throws RemoteException;
  public boolean Ingresar (int codigo, String nombre, String apellido, String direccion, String email, int edad, String grado) throws RemoteException;
+
+    public Object buscar_persona(String cod);
     
     
 }
