@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package clientermi;
+package clientermi.Docentes;
 
 
+import clientermi.*;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
@@ -18,19 +19,19 @@ import rmibd.RMIBD;
  *
  * @author Thermaltake
  */
-public class FormBusqAlumno extends javax.swing.JFrame {
+public class ModificarDocentes extends javax.swing.JFrame {
 
     /**
      * Creates new form FormBusqAlumno
      */
-    public FormBusqAlumno() {
+    public ModificarDocentes() {
         initComponents();
-        jTextField2.setEnabled(false);
-        jTextField3.setEnabled(false);
-        jTextField4.setEnabled(false);
-        jTextField5.setEnabled(false);
-        jTextField6.setEnabled(false);
-        jTextField7.setEnabled(false);
+        txtNombres.setEnabled(false);
+        txtApellidos.setEnabled(false);
+        txtDireccion.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtEdad.setEnabled(false);
+        txtGrado.setEnabled(false);
         
     }
 
@@ -45,7 +46,7 @@ public class FormBusqAlumno extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
@@ -57,20 +58,21 @@ public class FormBusqAlumno extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
+        txtNombres = new javax.swing.JTextField();
+        txtApellidos = new javax.swing.JTextField();
+        txtDireccion = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
+        txtEdad = new javax.swing.JTextField();
+        txtGrado = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Busqueda de Alumnos ");
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Control Administrar Docentes - Modificar Docentes");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("  Ingrese Código de Alumno a Buscar   "));
 
         jLabel1.setText("Codigo de Alumno");
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/buscar.png"))); // NOI18N
         jButton1.setText("Buscar Alumno");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -86,10 +88,10 @@ public class FormBusqAlumno extends javax.swing.JFrame {
                 .addGap(87, 87, 87)
                 .addComponent(jLabel1)
                 .addGap(42, 42, 42)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(jButton1)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -97,8 +99,8 @@ public class FormBusqAlumno extends javax.swing.JFrame {
                 .addGap(14, 14, 14)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(26, Short.MAX_VALUE))
+                    .addComponent(txtCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -110,6 +112,7 @@ public class FormBusqAlumno extends javax.swing.JFrame {
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("  Accciones  "));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/modificar.png"))); // NOI18N
         jButton2.setText("Actualizar Datos");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,6 +120,7 @@ public class FormBusqAlumno extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/recursos/guardar.png"))); // NOI18N
         jButton4.setText("Guardar Cambios");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,7 +135,7 @@ public class FormBusqAlumno extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                 .addContainerGap(52, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(29, 29, 29))
         );
@@ -145,21 +149,21 @@ public class FormBusqAlumno extends javax.swing.JFrame {
                 .addContainerGap(89, Short.MAX_VALUE))
         );
 
-        jLabel2.setText("Nombres");
+        jLabel2.setText("Nombres de Docente :");
 
-        jLabel3.setText("Apellidos");
+        jLabel3.setText("Apellidos de Docente :");
 
-        jLabel4.setText("Direccion");
+        jLabel4.setText("Direccion de Docente :");
 
-        jLabel5.setText("Email");
+        jLabel5.setText("Email de Docente :");
 
-        jLabel6.setText("Edad");
+        jLabel6.setText("Edad de Docente :");
 
-        jLabel7.setText("Grado");
+        jLabel7.setText("Grado de Docente :");
 
-        jTextField6.addActionListener(new java.awt.event.ActionListener() {
+        txtEdad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField6ActionPerformed(evt);
+                txtEdadActionPerformed(evt);
             }
         });
 
@@ -174,19 +178,19 @@ public class FormBusqAlumno extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel7))
-                .addGap(38, 38, 38)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextField2)
-                    .addComponent(jTextField3)
-                    .addComponent(jTextField4)
-                    .addComponent(jTextField5)
-                    .addComponent(jTextField6)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 213, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel7)
+                    .addComponent(jLabel6))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellidos))
+                .addGap(18, 18, 18)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(31, 31, 31))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -199,28 +203,28 @@ public class FormBusqAlumno extends javax.swing.JFrame {
                         .addGap(23, 23, 23)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(txtNombres, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(txtApellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel4)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                            .addComponent(txtEdad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtGrado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel7))))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -228,28 +232,28 @@ public class FormBusqAlumno extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(30, 30, 30)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                .addGap(30, 30, 30))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(30, 30, 30)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField6ActionPerformed
+    private void txtEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEdadActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField6ActionPerformed
+    }//GEN-LAST:event_txtEdadActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -259,20 +263,20 @@ public class FormBusqAlumno extends javax.swing.JFrame {
             RMIBD interfaz = (RMIBD) registro.lookup("rmi://localhost:4567/RMIBD");
             int cod;
             
-            cod=Integer.parseInt(jTextField1.getText());
+            cod=Integer.parseInt(txtCodigo.getText());
 
             
-            if(interfaz.BusLis_Alumnos(cod).isEmpty()){
+            if(interfaz.BusLis_Docentes(cod).isEmpty()){
                 
                 JOptionPane.showMessageDialog(null,"no encontrado");
                 
             }else{
-                jTextField2.setText(interfaz.BusLis_Alumnos(cod).get(0).getNombreAlumnos());
-                jTextField3.setText(interfaz.BusLis_Alumnos(cod).get(0).getApellidoAlumnos());
-                jTextField4.setText(interfaz.BusLis_Alumnos(cod).get(0).getDireccionAlumnos());
-                jTextField5.setText(interfaz.BusLis_Alumnos(cod).get(0).getEmailAlumnos());
-                jTextField6.setText(interfaz.BusLis_Alumnos(cod).get(0).getEdadAlumnos());
-                jTextField7.setText(interfaz.BusLis_Alumnos(cod).get(0).getGradoAlumnos());
+                txtNombres.setText(interfaz.BusLis_Docentes(cod).get(0).getNombreDocentes());
+                txtApellidos.setText(interfaz.BusLis_Docentes(cod).get(0).getApellidoDocentes());
+                txtDireccion.setText(interfaz.BusLis_Docentes(cod).get(0).getSexoDocentes());
+                txtEmail.setText(interfaz.BusLis_Docentes(cod).get(0).getDireccionDocentes());
+                txtEdad.setText(interfaz.BusLis_Docentes(cod).get(0).getEdadDocentes());
+                txtGrado.setText(interfaz.BusLis_Docentes(cod).get(0).getEmailDocentes());
 
             }
         
@@ -288,12 +292,12 @@ public class FormBusqAlumno extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         
-        jTextField2.setEnabled(true);
-        jTextField3.setEnabled(true);
-        jTextField4.setEnabled(true);
-        jTextField5.setEnabled(true);
-        jTextField6.setEnabled(true);
-        jTextField7.setEnabled(true);
+        txtNombres.setEnabled(true);
+        txtApellidos.setEnabled(true);
+        txtDireccion.setEnabled(true);
+        txtEmail.setEnabled(true);
+        txtEdad.setEnabled(true);
+        txtGrado.setEnabled(true);
         
        
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -304,27 +308,27 @@ public class FormBusqAlumno extends javax.swing.JFrame {
         int cod;
 
         String nom, apll, dir;
-        cod = Integer.parseInt(jTextField1.getText());
-        nom = jTextField2.getText();
-        apll = jTextField3.getText();
-        dir = jTextField4.getText();
+        cod = Integer.parseInt(txtCodigo.getText());
+        nom = txtNombres.getText();
+        apll = txtApellidos.getText();
+        dir = txtDireccion.getText();
 
         try{
             Registry registro = LocateRegistry.getRegistry("127.0.0.1", 4567);
             RMIBD interfaz = (RMIBD) registro.lookup("rmi://localhost:4567/RMIBD");
             interfaz.modificar(cod,nom,apll,dir);
             JOptionPane.showMessageDialog(null,"modificado Con Exito");
-            jTextField1.setText("");
-             jTextField2.setText("");
-              jTextField3.setText("");
-               jTextField4.setText("");
+            txtCodigo.setText("");
+             txtNombres.setText("");
+              txtApellidos.setText("");
+               txtDireccion.setText("");
 
                Object[] fila=new Object[4];
-               for(int i=0; i<interfaz.mostrarAlumnos().size();i++){
-                   fila[0]=interfaz.mostrarAlumnos().get(i).getCodigoAlumnos();
-                   fila[1]=interfaz.mostrarAlumnos().get(i).getNombreAlumnos();
-                   fila[2]=interfaz.mostrarAlumnos().get(i).getApellidoAlumnos();
-                   fila[3]=interfaz.mostrarAlumnos().get(i).getDireccionAlumnos();
+               for(int i=0; i<interfaz.mostrarDocentes().size();i++){
+                   fila[0]=interfaz.mostrarDocentes().get(i).getCodigoDocentes();
+                   fila[1]=interfaz.mostrarDocentes().get(i).getNombreDocentes();
+                   fila[2]=interfaz.mostrarDocentes().get(i).getApellidoDocentes();
+                   fila[3]=interfaz.mostrarDocentes().get(i).getDireccionDocentes();
 
                }
         } catch(RemoteException | NotBoundException e){
@@ -349,20 +353,27 @@ public class FormBusqAlumno extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(FormBusqAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDocentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(FormBusqAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDocentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(FormBusqAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDocentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(FormBusqAlumno.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ModificarDocentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new FormBusqAlumno().setVisible(true);
+                new ModificarDocentes().setVisible(true);
             }
         });
     }
@@ -381,12 +392,12 @@ public class FormBusqAlumno extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField txtApellidos;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtDireccion;
+    private javax.swing.JTextField txtEdad;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtGrado;
+    private javax.swing.JTextField txtNombres;
     // End of variables declaration//GEN-END:variables
 }

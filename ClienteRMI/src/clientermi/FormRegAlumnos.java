@@ -53,6 +53,8 @@ public class FormRegAlumnos extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
+        jTextField8 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -80,12 +82,17 @@ public class FormRegAlumnos extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setText("Registro de Alumnos");
 
+        jLabel2.setText("Sexo");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(116, 116, 116)
+                        .addComponent(jLabel1))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(35, 35, 35)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -95,19 +102,18 @@ public class FormRegAlumnos extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel7)
                             .addComponent(jLabel8)
-                            .addComponent(jLabel9))
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel2))
                         .addGap(42, 42, 42)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextField8)
                             .addComponent(jTextField1)
                             .addComponent(jTextField2)
                             .addComponent(jTextField3)
                             .addComponent(jTextField4)
                             .addComponent(jTextField5)
                             .addComponent(jTextField6)
-                            .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(116, 116, 116)
-                        .addComponent(jLabel1)))
+                            .addComponent(jTextField7, javax.swing.GroupLayout.DEFAULT_SIZE, 203, Short.MAX_VALUE))))
                 .addGap(0, 53, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -143,7 +149,11 @@ public class FormRegAlumnos extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
                     .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(33, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
+                .addContainerGap())
         );
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("   Acciones   "));
@@ -162,7 +172,7 @@ public class FormRegAlumnos extends javax.swing.JFrame {
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(84, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(27, 27, 27)
                 .addComponent(jButton2)
@@ -194,7 +204,7 @@ public class FormRegAlumnos extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30))
         );
@@ -206,20 +216,20 @@ public class FormRegAlumnos extends javax.swing.JFrame {
 
     // CODIGO DEL BOTON INGRESAR
         int cod;
-        int edad;
-        String nom, apll, dir, email, grado;
+        String nom, apll, dir, email, grado,edad,sexo;
         cod = Integer.parseInt(jTextField1.getText());
         nom = jTextField2.getText();
         apll = jTextField3.getText();
         dir = jTextField4.getText();
         email = jTextField5.getText();
-        edad = Integer.parseInt(jTextField6.getText());
+        edad = jTextField6.getText();
         grado = jTextField7.getText();
+        sexo = jTextField8.getText();
         
         try{
             Registry registro = LocateRegistry.getRegistry("127.0.0.1", 4567);
             RMIBD interfaz = (RMIBD) registro.lookup("rmi://localhost:4567/RMIBD");
-            interfaz.Ingresar(cod,nom,apll,dir,email,edad,grado);
+            interfaz.RegistrarAlumnos(cod,nom,apll,dir,email,edad,grado,sexo);
             JOptionPane.showMessageDialog(null,"Registro Con Exito");
             jTextField1.setText("");
              jTextField2.setText("");
@@ -228,15 +238,16 @@ public class FormRegAlumnos extends javax.swing.JFrame {
                jTextField5.setText("");
                jTextField6.setText("");
                jTextField7.setText("");
-               Object[] fila=new Object[7];
-               for(int i=0; i<interfaz.mostrar().size();i++){
-                   fila[0]=interfaz.mostrar().get(i).getCodigo();
-                   fila[1]=interfaz.mostrar().get(i).getNombre();
-                   fila[2]=interfaz.mostrar().get(i).getApellido();
-                   fila[3]=interfaz.mostrar().get(i).getDireccion();
-                   fila[4]=interfaz.mostrar().get(i).getEmail();
-                   fila[5]=interfaz.mostrar().get(i).getEdad();
-                   fila[6]=interfaz.mostrar().get(i).getGrado();
+               Object[] fila=new Object[8];
+               for(int i=0; i<interfaz.mostrarAlumnos().size();i++){
+                   fila[0]=interfaz.mostrarAlumnos().get(i).getCodigoAlumnos();
+                   fila[1]=interfaz.mostrarAlumnos().get(i).getNombreAlumnos();
+                   fila[2]=interfaz.mostrarAlumnos().get(i).getApellidoAlumnos();
+                   fila[3]=interfaz.mostrarAlumnos().get(i).getDireccionAlumnos();
+                   fila[4]=interfaz.mostrarAlumnos().get(i).getEmailAlumnos();
+                   fila[5]=interfaz.mostrarAlumnos().get(i).getEdadAlumnos();
+                   fila[6]=interfaz.mostrarAlumnos().get(i).getGradoAlumnos();
+                   fila[6]=interfaz.mostrarAlumnos().get(i).getSexoAlumnos();
 
 
                }
@@ -288,6 +299,7 @@ public class FormRegAlumnos extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -304,5 +316,6 @@ public class FormRegAlumnos extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JTextField jTextField7;
+    private javax.swing.JTextField jTextField8;
     // End of variables declaration//GEN-END:variables
 }

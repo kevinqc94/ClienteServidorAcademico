@@ -6,7 +6,10 @@
 package clientermi;
 
 import java.awt.Color;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
 import javax.swing.JOptionPane;
+import rmibd.RMIBD;
 
 /**
  *
@@ -70,7 +73,12 @@ public class FormLogin extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Tipo Usuario");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador", "Docente" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Administrador" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,9 +156,40 @@ public class FormLogin extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+
+    boolean f = false;
+        try {
+            Registry registro = LocateRegistry.getRegistry("127.0.0.1", 4567);
+            RMIBD interfaz = (RMIBD) registro.lookup("rmi://localhost:4567/RMIBD");
+
+            f = interfaz.ValidarUsuario(txtUsuario.getText(), txtPassword.getText());
+            
+            if (f == true) {
+                JOptionPane.showMessageDialog(null, "Bienvenido 'Administrador' al Sistema", 
+                        "Inicio de Sesión Satisfactorio",JOptionPane.INFORMATION_MESSAGE);
+                
+                this.setVisible(false);
+                FormPanelControl menu = new FormPanelControl();
+                menu.setLocationRelativeTo(null);
+                menu.setVisible(true);
+
+            } else {
+                JOptionPane.showMessageDialog(null, "Usuario y/o Contraseña Incorrectos, Intente Nuevamente", 
+                        "Acceso Denegado",JOptionPane.ERROR_MESSAGE);
+                txtUsuario.setText("");
+                txtPassword.setText("");
+                txtUsuario.grabFocus();
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+
+        }
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
 
     /**
      * @param args the command line arguments
